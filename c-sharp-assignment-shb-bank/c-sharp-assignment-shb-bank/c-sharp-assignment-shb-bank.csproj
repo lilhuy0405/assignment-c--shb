@@ -54,6 +54,10 @@
         </Reference>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="mscorlib" />
+        <Reference Include="MySql.Data, Version=8.0.20.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+          <HintPath>packages\MySql.Data.8.0.20\lib\net48\MySql.Data.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106">
           <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
           <Private>True</Private>
@@ -87,9 +91,17 @@
         </Reference>
         <Reference Include="System.Transactions" />
         <Reference Include="System.Xml" />
+        <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+          <HintPath>packages\MySql.Data.8.0.20\lib\net48\Ubiety.Dns.Core.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+          <HintPath>packages\MySql.Data.8.0.20\lib\net48\Zstandard.Net.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Controller\SHBAccountController.cs" />
+        <Compile Include="Controller\AccountController.cs" />
         <Compile Include="Entity\Account.cs" />
         <Compile Include="Entity\SHBTransaction.cs" />
         <Compile Include="Helper\ConnectionHelper.cs" />

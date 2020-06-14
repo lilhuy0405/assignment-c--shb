@@ -1,7 +1,29 @@
-﻿namespace c_sharp_assignment_shb_bank.Helper
+﻿using System;
+using MySql.Data.MySqlClient;
+
+namespace c_sharp_assignment_shb_bank.Helper
 {
     public class ConnectionHelper
     {
-        /*get connection to databse --> Mysql.Data*/
+        /*get connection to database --> Mysql.Data*/
+        
+        private const string DatabaseServer = "127.0.0.1";
+        private const string DatabaseName = "shb_account_manager";
+        private const string DatabaseUid = "root";
+        private const string DatabasePassword = "";
+        private static MySqlConnection _connection;
+
+        public static MySqlConnection GetConnection()
+        {
+            if (_connection == null)
+            {
+                Console.WriteLine("Create new connection...");
+                _connection = new MySqlConnection(
+                    $"SERVER={DatabaseServer};DATABASE={DatabaseName};UID={DatabaseUid};PASSWORD={DatabasePassword}");
+                Console.WriteLine("...success!");
+            }
+
+            return _connection;
+        }
     }
 }

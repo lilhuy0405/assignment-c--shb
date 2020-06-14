@@ -1,7 +1,43 @@
-﻿namespace c_sharp_assignment_shb_bank.Model
+﻿using System;
+using c_sharp_assignment_shb_bank.Entity;
+using c_sharp_assignment_shb_bank.Helper;
+using MySql.Data.MySqlClient;
+
+namespace c_sharp_assignment_shb_bank.Model
 {
     public class AccountModel
     {
         /* model for account */
+        
+        public Account GetActiveAccountByUsername(string username)
+        {
+            // kết nối database
+            Account account = null;
+            var cnn = ConnectionHelper.GetConnection();
+            cnn.Open();
+            var cmd = new MySqlCommand(
+                $"select * from account where username = '{username}' and status = '{(Enum) AccountStatus.ACTIVE}'",
+                cnn);
+            var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                account = new Account()
+                {
+                   FullName = reader.GetString("fullName"),
+                   AccountNumber = reader.GetString("accountNumber"),
+                   PhoneNumber = reader.GetString("phoneNumber"),
+                   Email = reader.GetString("email"),
+                   Salt = reader.GetString("salt"),
+                   PasswordHash = reader.GetString("passwordHash"),
+                   Username = reader.GetString("username"),
+                   Role = (AccountRole) reader.GetInt32("role"),
+                   Balance = reader.GetDouble("balance"),
+                   Status = (AccountStatus) reader.GetInt32("status")
+                };
+            }
+
+            cnn.Close();
+            return account;
+        }
     }
 }
