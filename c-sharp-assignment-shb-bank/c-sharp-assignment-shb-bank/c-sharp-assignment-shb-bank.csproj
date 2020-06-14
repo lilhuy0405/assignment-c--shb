@@ -89,6 +89,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Controller\SHBAccountController.cs" />
         <Compile Include="Entity\Account.cs" />
         <Compile Include="Entity\SHBTransaction.cs" />
         <Compile Include="Helper\ConnectionHelper.cs" />
@@ -97,9 +98,6 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="View\ConsoleView.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Controller" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
