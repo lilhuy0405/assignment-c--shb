@@ -30,6 +30,7 @@ namespace c_sharp_assignment_shb_bank.Controller
 
         public void Register()
         {
+            Console.WriteLine("--Register--");
             
         }
     }
