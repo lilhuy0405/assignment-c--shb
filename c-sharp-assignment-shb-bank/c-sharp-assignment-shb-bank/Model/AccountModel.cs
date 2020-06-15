@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using c_sharp_assignment_shb_bank.Entity;
 using c_sharp_assignment_shb_bank.Helper;
 using MySql.Data.MySqlClient;
@@ -38,6 +39,31 @@ namespace c_sharp_assignment_shb_bank.Model
 
             cnn.Close();
             return account;
+        }
+
+        public Boolean CheckExsitAccountNumber(string ramdomNumber)
+        {
+            var cnn = ConnectionHelper.GetConnection();
+            cnn.Open();
+            var cmd = new MySqlCommand(
+                $"select rollnumber from accounts where rollnumber = '{ramdomNumber}'",cnn);
+
+            var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void SaveAccount(Account newAccount)
+        {
+            var cnn = ConnectionHelper.GetConnection();
+            cnn.Open();
+            var cmd = new MySqlCommand(
+                $"insert into accounts values('{newAccount.AccountNumber}','{newAccount.Username}','{newAccount.PasswordHash}','{newAccount.Salt}','{newAccount.FullName}','{newAccount.PhoneNumber}','{newAccount.Email}','{newAccount.Balance}','{newAccount.Status}','{newAccount.Role}',) ");
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Created new account success");
         }
     }
 }
