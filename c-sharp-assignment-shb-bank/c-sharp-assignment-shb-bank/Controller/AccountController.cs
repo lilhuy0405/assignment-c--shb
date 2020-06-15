@@ -30,8 +30,12 @@ namespace c_sharp_assignment_shb_bank.Controller
 
         public void Register()
         {
+            var newAccount = new Account();
             Console.WriteLine("--Register--");
+            Console.WriteLine("Enter Username");
+            newAccount.Username = Console.ReadLine();
             
+
         }
     }
 }
