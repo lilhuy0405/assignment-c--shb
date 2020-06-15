@@ -27,5 +27,10 @@ namespace c_sharp_assignment_shb_bank.Controller
 
             return null;
         }
+
+        public void Register()
+        {
+            
+        }
     }
 }
